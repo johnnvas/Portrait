@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import InputField from './components/InputField'
 import {Planet} from './components/model'
 import './App.css';
+import PlanetList from './components/PlanetList';
 
 const App: React.FC =() =>{
    const [planet, setPlanet] = useState<string>('');
@@ -14,13 +15,14 @@ const App: React.FC =() =>{
       setPlanets([...planets, {id: Date.now(), planet, alreadyChosen: false}]);
       setPlanet('');
     }
-  }
+   }
+  console.log(planets);
 
   return (
     <div className='App'>
       <span className="heading">Star Wars</span>
-
-      <InputField planet={planet} setPlanet={setPlanet}/>
+      <InputField planet={planet} setPlanet={setPlanet} handleAdd={handleAdd} />
+      <PlanetList planets={planets} setPlanets={setPlanets}/>
     </div>
   );
 }
