@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
-import { Planet } from './model'
+import Swapi from './Swapi'
+import { Planet, PlanetDetails } from './model'
 import './styles.css'
 
 interface Props {
   planet: Planet,
   planets: Planet[],
-  setPlanets: React.Dispatch<React.SetStateAction<Planet[]>>
+  planetDetails: PlanetDetails[],
+  setPlanets: React.Dispatch<React.SetStateAction<Planet[]>>,
+  setPlanetDetails: React.Dispatch<React.SetStateAction<PlanetDetails[]>>;
 }
 
 
-const PlanetCard = ({ planet, planets, setPlanets }: Props) => {
+const PlanetCard = ({ planet, planets, setPlanets,  planetDetails, setPlanetDetails }: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editPlanet, setEditPlanet] = useState<string>(planet.planet);
 
@@ -38,13 +41,17 @@ const PlanetCard = ({ planet, planets, setPlanets }: Props) => {
       planet.id === id ? { ...planet, planet: editPlanet } : p
     )))
     setEdit(false);
-  }
+   }
 
+  const keyword = planet.planet
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit])
+
+
+
 
 return (
     <form className='planets__single' onSubmit={(e) => handleEdit(e, planet.id)}>
@@ -64,7 +71,8 @@ return (
 
           ) : (
             <span className="planets__single--text">
-              {planet.planet}
+                {/* {planet.planet} */}
+                <Swapi keyword={keyword} />
             </span>
 
           )

@@ -1,16 +1,20 @@
 import React from 'react'
-import { Planet } from './model';
+import { Planet,  PlanetDetails } from './model';
 import PlanetCard from './PlanetCard'
 import "./styles.css";
 
 
 interface Props{
   planets: Planet[];
+  planetDetails: PlanetDetails[];
   setPlanets: React.Dispatch<React.SetStateAction<Planet[]>>;
+  setPlanetDetails: React.Dispatch<React.SetStateAction<PlanetDetails[]>>;
 }
 
 
-const PlanetList:React.FC<Props> = ({ planets, setPlanets }: Props) => {
+const PlanetList:React.FC<Props> = ({ planets, setPlanets, planetDetails, setPlanetDetails }: Props) => {
+
+
   return (
     <div className='planets'>
 
@@ -20,6 +24,8 @@ const PlanetList:React.FC<Props> = ({ planets, setPlanets }: Props) => {
           planet={planet}
           planets={planets}
           setPlanets={setPlanets}
+          planetDetails={planetDetails}
+          setPlanetDetails={setPlanetDetails}
         />
       ))}
     </div>
