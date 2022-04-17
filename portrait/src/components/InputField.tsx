@@ -18,16 +18,6 @@ const InputField = ({ planet, setPlanet, handleAdd }: Props) => {
     // setData(res.data);
   };
 
-  // const getPlanets = async (): Promise<Array<Planet> | string> => {
-  //   const api = `https://swapi.dev/api/planets?search=r2`
-  //   const res = await axios(api);
-  //     // const response = await fetch(api)
-  //   console.log('HEEEERREEEEEEEEE', res.data);
-  //     // const { data } = await res.json()
-  //     // return data
-
-  // }
-
   return (
     <form
       className='input'
