@@ -1,5 +1,6 @@
 import React from 'react'
 import { Planet } from './model';
+import PlanetCard from './PlanetCard'
 import "./styles.css";
 
 
@@ -12,8 +13,14 @@ interface Props{
 const PlanetList:React.FC<Props> = ({ planets, setPlanets }: Props) => {
   return (
     <div className='planets'>
-      {planets.map((planet) => (
-        <li>{planet.planet}</li>
+
+      {planets.map(planet => (
+        <PlanetCard
+          key={planet.id}
+          planet={planet}
+          planets={planets}
+          setPlanets={setPlanets}
+        />
       ))}
     </div>
   )
