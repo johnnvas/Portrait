@@ -12,20 +12,20 @@ export const SWAPI_API_ROUTES = [
   "starships"
 ];
 
-interface Props{
-  keyword: string;
-  planetDetails: PlanetDetails[];
-  // planet: Planet;
-  // setPlanet: React.Dispatch<React.SetStateAction<string>>;
-  // setPlanetDetails: React.Dispatch<React.SetStateAction<PlanetDetails[]>>;
-  // handleAdd: (e: React.FormEvent) => void;
-}
+// interface Props{
+//   keyword: string;
+//   planetDetails: PlanetDetails[];
+//   // planet: Planet;
+//   // setPlanet: React.Dispatch<React.SetStateAction<string>>;
+//   // setPlanetDetails: React.Dispatch<React.SetStateAction<PlanetDetails[]>>;
+//   // handleAdd: (e: React.FormEvent) => void;
+// }
 
 
-const Swapi = ({keyword, planetDetails }: Props) => {
-  const [planetData, setPlanetData] = useState<string[]>([]);
+const Swapi = ({keyword }) => {
+  const [planetData, setPlanetData] = useState([]);
 
-  const getPlanets = async (keyword: string) => {
+  const getPlanets = async (keyword) => {
     const res = await axios(`https://swapi.dev/api/planets/?search=${keyword}`);
     console.log('HEEEERREEEEEEEEE', res.data.results);
 
@@ -40,7 +40,8 @@ const Swapi = ({keyword, planetDetails }: Props) => {
 
   const indPlanet = planetData[0]
 
-  console.log('OUTSIDE ASYNC', indPlanet, keyword);
+  console.log('OUTSIDE ASYNC', planetData, keyword);
+  // console.log('OUTSIDE ASYNC22222', planetData[0].climate);
 
 
 
@@ -50,10 +51,11 @@ const Swapi = ({keyword, planetDetails }: Props) => {
       <div>
         Swapi
         {planetData &&
-          planetData?.forEach((planet: PlanetDetails[]) => {
+          planetData?.forEach((planet) => {
+            console.log('INSIDE ASYNC', planet.climate);
             <div>
-              <span>{indPlanet.name}</span>
-              <span>{indPlanet.population}</span>
+              <span>{planet.name}</span>
+              <span>{planet.population}</span>
             </div>
 
         })}
