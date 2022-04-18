@@ -65,7 +65,9 @@
 }
 
 .planets__single--text {
+  display: flex;
   flex: 1;
+  flex-wrap: wrap;
   padding: 5px;
   border: none;
   font-size: 20px;

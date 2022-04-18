@@ -2,24 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Planet, PlanetDetails} from './model'
 import axios, {AxiosResponse} from 'axios';
 import { MdDriveEta } from "react-icons/md";
-export const SWAPI_ROUTE = "https://swapi.dev/api/";
-export const SWAPI_API_ROUTES = [
-  "people",
-  "planets",
-  "films",
-  "species",
-  "vehicles",
-  "starships"
-];
-
-// interface Props{
-//   keyword: string;
-//   planetDetails: PlanetDetails[];
-//   // planet: Planet;
-//   // setPlanet: React.Dispatch<React.SetStateAction<string>>;
-//   // setPlanetDetails: React.Dispatch<React.SetStateAction<PlanetDetails[]>>;
-//   // handleAdd: (e: React.FormEvent) => void;
-// }
+import "./styles.css";
 
 
 const Swapi = ({keyword }) => {
@@ -48,17 +31,28 @@ const Swapi = ({keyword }) => {
 
   return (
     <div>
-      <div>
-        Swapi
+      <div className='API'>
+        {keyword}
         {planetData &&
-          planetData?.forEach((planet) => {
-            console.log('INSIDE ASYNC', planet.climate);
+          planetData?.map(planet => (
+            // console.log('INSIDE ASYNC', planet.climate);
             <div>
-              <span>{planet.name}</span>
-              <span>{planet.population}</span>
+              <li>Rotation Period: {planet.rotation_period}</li>
+              <li>Orbital Period: {planet.orbital_period}</li>
+              <li>Diameter: {planet.diameter}</li>
+              <li>Climate: {planet.climate}</li>
+              <li>Gravity: {planet.gravity}</li>
+              <li>Terrain: {planet.terrain}</li>
+              {/* <li>Surface Water: {planet.surface_water}</li>
+              <li>Population: {planet.population}</li>
+              <li>Residents: {planet.residents}</li>
+              <li>Films : {planet.films}</li>
+              <li>Created: {planet.created}</li>
+              <li>Edited: {planet.edited}</li>
+              <li>Url: {planet.url}</li> */}
             </div>
 
-        })}
+        ))}
       </div>
 
     </div>
