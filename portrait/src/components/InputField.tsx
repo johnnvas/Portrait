@@ -11,16 +11,18 @@ interface Props{
 const InputField = ({ planet, setPlanet, handleAdd }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [planetData, setPlanetData] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const getPlanets = async (planet: string) => {
     const res = await axios(`https://swapi.dev/api/planets/?search=${planet}`);
-    // console.log('HEEEERREEEEEEEEE', res.data.results);
+
 
     setPlanetData(res.data.results);
     return res.data.results;
   };
 
-  // console.log('OUTSIDE ASYNC', planetData);
+
+
 
   return (
     <form
